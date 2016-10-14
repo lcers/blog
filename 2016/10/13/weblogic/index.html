@@ -1,0 +1,702 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="weblogic安装 配置" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="liuc's blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="weblogic 作为企业常用的web服务器，提供了如分布式事务，jndi数据源，集群部署，性能监控等很实用的功能，之前项目使用weblogic双机部署，折腾了好久，这次把从安装到配置集群的步骤写下来，之前安装介质都是客户提供，机器是128G内存，硬盘1TB ,8核cpu 本文主要先介绍单机安装及一些配置。集群安装又不一样。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Weblogic单机安装及配置">
+<meta property="og:url" content="http://lcers.com/2016/10/13/weblogic/index.html">
+<meta property="og:site_name" content="liuc's blog">
+<meta property="og:description" content="weblogic 作为企业常用的web服务器，提供了如分布式事务，jndi数据源，集群部署，性能监控等很实用的功能，之前项目使用weblogic双机部署，折腾了好久，这次把从安装到配置集群的步骤写下来，之前安装介质都是客户提供，机器是128G内存，硬盘1TB ,8核cpu 本文主要先介绍单机安装及一些配置。集群安装又不一样。">
+<meta property="og:updated_time" content="2016-10-14T06:07:55.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Weblogic单机安装及配置">
+<meta name="twitter:description" content="weblogic 作为企业常用的web服务器，提供了如分布式事务，jndi数据源，集群部署，性能监控等很实用的功能，之前项目使用weblogic双机部署，折腾了好久，这次把从安装到配置集群的步骤写下来，之前安装介质都是客户提供，机器是128G内存，硬盘1TB ,8核cpu 本文主要先介绍单机安装及一些配置。集群安装又不一样。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://lcers.com/2016/10/13/weblogic/"/>
+
+
+  <title> Weblogic单机安装及配置 | liuc's blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?92ac79e969a99f5931790fe3e10e10e0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">liuc's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">遥望星空。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Weblogic单机安装及配置
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-13T13:49:30+08:00" content="2016-10-13">
+              2016-10-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/13/weblogic/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/13/weblogic/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>weblogic 作为企业常用的web服务器，提供了如分布式事务，jndi数据源，集群部署，性能监控等很实用的功能，之前项目使用weblogic双机部署，折腾了好久，这次把从安装到配置集群的步骤写下来，之前安装介质都是客户提供，机器是128G内存，硬盘1TB ,8核cpu 本文主要先介绍单机安装及一些配置。集群安装又不一样。<br><a id="more"></a></p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>一台基本环境安装好的linux虚拟机，weblogic安装介质。使用putty连接虚拟机。<br>weblogic 版本：Oracle WebLogic Server 11gR1 (10.3.6)<br>jdk版本：1.7</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@lc ~]# cat /etc/issue</div><div class="line">CentOS release 6.8 (Final)</div><div class="line">Kernel \r on an \m</div><div class="line"></div><div class="line">[root@lc ~]# java -version</div><div class="line">-bash: java: command not found</div><div class="line">[root@lc ~]# whereis java</div><div class="line">java:</div></pre></td></tr></table></figure>
+<p>新的虚拟机没有安装Java，先去安装Java环境，Oracle官网找到下载地址。<br>wget <a href="http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz" target="_blank" rel="external">http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz</a></p>
+<p>如果虚拟机不能联网，可以先下载好，通过putty 的pscp 命令或者其他方式将文件传到虚拟机上。<br>解压安装，配置好环境，我这儿配置的是全局环境，每个用户都可以使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[root@lc ~]# tar -xf jdk-7u79-linux-x64.tar.gz</div><div class="line">[root@lc ~]# ls</div><div class="line">anaconda-ks.cfg  jdk1.7.0_79  jdk-7u79-linux-x64.tar.gz  mongodb  redis</div><div class="line">[root@lc ~]# mv  ./jdk1.7.0_79/ /usr/local/</div><div class="line">[root@lc ~]# ll /usr/local/jdk1.7.0_79/</div><div class="line">总用量 19796</div><div class="line">drwxr-xr-x. 2 uucp 143     4096 4月  11 2015 bin</div><div class="line">-r--r--r--. 1 uucp 143     3339 4月  11 2015 COPYRIGHT</div><div class="line">...</div><div class="line">vi /etc/profile</div></pre></td></tr></table></figure></p>
+<p>在profile 文件末尾写入</p>
+<p>export JAVA_HOME=/usr/local/jdk1.7.0_79</p>
+<p>export PATH=$JAVA_HOME/bin:$PATH</p>
+<p>export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</p>
+<p>退出并且保存。<br>然后执行source /etc/profile 让环境变量立即生效。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@lc ~]# vi /etc/profile</div><div class="line">[root@lc ~]# source /etc/profile</div><div class="line">[root@lc ~]# java -version</div><div class="line">java version &quot;1.7.0_79&quot;</div><div class="line">Java(TM) SE Runtime Environment (build 1.7.0_79-b15)</div><div class="line">Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)</div></pre></td></tr></table></figure></p>
+<p>创建文本weblogic用户组，等会就使用这个这个用户进行安装。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@lc ~]# groupadd weblogic</div><div class="line">[root@lc ~]# useradd weblogic -g weblogic</div><div class="line">[root@lc ~]# passwd weblogic</div><div class="line">...</div><div class="line"></div><div class="line">[root@lc ~]# su weblogic</div><div class="line">[weblogic@lc root]$</div></pre></td></tr></table></figure></p>
+<h2 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h2><p>安装方式有两种，1 通过界面安装 2 字符界面的静默安装 ，如果你的虚拟机没有安装界面程序，也要选择界面安装，可以通过xmnager软件的Xstart进行图形化安装，本文则主要介绍静默安装。<br>注意这个时候是weblogic用户登录。</p>
+<h2 id="配置域"><a href="#配置域" class="headerlink" title="配置域"></a>配置域</h2><p>安装完成之后，创建域。</p>
+<h2 id="weblogic控制台"><a href="#weblogic控制台" class="headerlink" title="weblogic控制台"></a>weblogic控制台</h2><p>已经配置完成，物理机访问 <a href="http://192.168.1.112:7001/console" target="_blank" rel="external">http://192.168.1.112:7001/console</a> , 这个ip是虚拟机的ip，如果不能访问需要配置防火墙规则将7001端口开放出来。<br>输入刚刚配置好的用户名及密码就可以登录控制台进行管理weblogic</p>
+<h2 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a>其他配置</h2><p>配置线程池，初始内存等。</p>
+<h2 id="验证部署"><a href="#验证部署" class="headerlink" title="验证部署"></a>验证部署</h2><h2 id="最后总结"><a href="#最后总结" class="headerlink" title="最后总结"></a>最后总结</h2><p>经过这些步骤就可以通过weblogic 发布，管理，监控应用了。下一篇开始写weblogic 的集群安装。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/weblogic/" rel="tag">#weblogic</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/13/git/" rel="next" title="Git常用命令">
+                <i class="fa fa-chevron-left"></i> Git常用命令
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/13/weblogic_cluster/" rel="prev" title="Weblogic集群安装配置">
+                Weblogic集群安装配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/13/weblogic/"
+           data-title="Weblogic单机安装及配置" data-url="http://lcers.com/2016/10/13/weblogic/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/9881449.jpg"
+               alt="liuc" />
+          <p class="site-author-name" itemprop="name">liuc</p>
+          <p class="site-description motion-element" itemprop="description">个人记录</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.v2ex.com/" title="V2EX" target="_blank">V2EX</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始安装"><span class="nav-number">2.</span> <span class="nav-text">开始安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置域"><span class="nav-number">3.</span> <span class="nav-text">配置域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#weblogic控制台"><span class="nav-number">4.</span> <span class="nav-text">weblogic控制台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他配置"><span class="nav-number">5.</span> <span class="nav-text">其他配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证部署"><span class="nav-number">6.</span> <span class="nav-text">验证部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后总结"><span class="nav-number">7.</span> <span class="nav-text">最后总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liuc</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liucblog"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

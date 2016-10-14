@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="liuc blog" />
+  <meta name="keywords" content="weblogic集群" />
 
 
 
@@ -86,15 +86,16 @@
 
 
 
-<meta name="description" content="个人记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="liuc's blog">
-<meta property="og:url" content="http://lcers.com/archives/index.html">
+<meta name="description" content="上一次写了weblogic单机的安装配置和部署，这次来写weblogic集群的安装和配置，集群安装和单机安装有些不一样，需要配置节点管理器和受管节点。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Weblogic集群安装配置">
+<meta property="og:url" content="http://lcers.com/2016/10/13/weblogic_cluster/index.html">
 <meta property="og:site_name" content="liuc's blog">
-<meta property="og:description" content="个人记录">
+<meta property="og:description" content="上一次写了weblogic单机的安装配置和部署，这次来写weblogic集群的安装和配置，集群安装和单机安装有些不一样，需要配置节点管理器和受管节点。">
+<meta property="og:updated_time" content="2016-10-14T06:07:49.058Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="liuc's blog">
-<meta name="twitter:description" content="个人记录">
+<meta name="twitter:title" content="Weblogic集群安装配置">
+<meta name="twitter:description" content="上一次写了weblogic单机的安装配置和部署，这次来写weblogic集群的安装和配置，集群安装和单机安装有些不一样，需要配置节点管理器和受管节点。">
 
 
 
@@ -115,10 +116,10 @@
 
 
 
-  <link rel="canonical" href="http://lcers.com/archives/"/>
+  <link rel="canonical" href="http://lcers.com/2016/10/13/weblogic_cluster/"/>
 
 
-  <title> 归档 | liuc's blog </title>
+  <title> Weblogic集群安装配置 | liuc's blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -149,7 +150,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -247,140 +248,196 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 3 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/14/weblogic/" itemprop="url">
-              
-                <span itemprop="name">Weblogic单机安装及配置</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-14T15:48:30+08:00"
-              content="2016-10-14" >
-          10-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/13/weblogic_cluster/" itemprop="url">
-              
-                <span itemprop="name">Weblogic集群安装配置</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-13T16:45:00+08:00"
-              content="2016-10-13" >
-          10-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/13/git/" itemprop="url">
-              
-                <span itemprop="name">Git常用命令</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-13T09:30:47+08:00"
-              content="2016-10-13" >
-          10-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Weblogic集群安装配置
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-13T16:45:00+08:00" content="2016-10-13">
+              2016-10-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/13/weblogic_cluster/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/13/weblogic_cluster/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>上一次写了weblogic单机的安装配置和部署，这次来写weblogic集群的安装和配置，集群安装和单机安装有些不一样，需要配置节点管理器和受管节点。<br><a id="more"></a></p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>准备两台虚拟机，先分配好端口,安装介质和单机是一样。</p>
+<table>
+<thead>
+<tr>
+<th>节点名称</th>
+<th>ip</th>
+<th>端口</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>admin</td>
+<td>192.168.1.112</td>
+<td>7001</td>
+<td>管理节点</td>
+</tr>
+<tr>
+<td>proxy</td>
+<td>192.168.1.112</td>
+<td>8000</td>
+<td>代理节点</td>
+</tr>
+<tr>
+<td>node1</td>
+<td>192.168.1.112</td>
+<td>7012</td>
+<td>节点1</td>
+</tr>
+<tr>
+<td>node2</td>
+<td>192.168.1.113</td>
+<td>7013</td>
+<td>节点2</td>
+</tr>
+</tbody>
+</table>
+<p>分别在不同的节点，把端口策略放开，在节点1<br>telnet 192.168.1.113:7013</p>
+<h2 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h2><h2 id="验证部署"><a href="#验证部署" class="headerlink" title="验证部署"></a>验证部署</h2><h2 id="最后总结"><a href="#最后总结" class="headerlink" title="最后总结"></a>最后总结</h2>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/weblogic/" rel="tag">#weblogic</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/13/git/" rel="next" title="Git常用命令">
+                <i class="fa fa-chevron-left"></i> Git常用命令
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/14/weblogic/" rel="prev" title="Weblogic单机安装及配置">
+                Weblogic单机安装及配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -388,6 +445,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/13/weblogic_cluster/"
+           data-title="Weblogic集群安装配置" data-url="http://lcers.com/2016/10/13/weblogic_cluster/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -407,8 +472,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/9881449.jpg"
@@ -479,6 +553,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始安装"><span class="nav-number">2.</span> <span class="nav-text">开始安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证部署"><span class="nav-number">3.</span> <span class="nav-text">验证部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后总结"><span class="nav-number">4.</span> <span class="nav-text">最后总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -582,11 +667,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
 
 
   
