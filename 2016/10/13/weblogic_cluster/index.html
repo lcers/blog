@@ -92,7 +92,7 @@
 <meta property="og:url" content="http://lcers.com/2016/10/13/weblogic_cluster/index.html">
 <meta property="og:site_name" content="liuc's blog">
 <meta property="og:description" content="上一次写了weblogic单机的安装配置和部署，这次来写weblogic集群的安装和配置，集群安装和单机安装有些不一样，需要配置节点管理器和受管节点。">
-<meta property="og:updated_time" content="2016-10-14T06:07:49.058Z">
+<meta property="og:updated_time" content="2016-10-19T07:26:44.666Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Weblogic集群安装配置">
 <meta name="twitter:description" content="上一次写了weblogic单机的安装配置和部署，这次来写weblogic集群的安装和配置，集群安装和单机安装有些不一样，需要配置节点管理器和受管节点。">
@@ -373,8 +373,67 @@
 </tr>
 </tbody>
 </table>
-<p>分别在不同的节点，把端口策略放开，在节点1<br>telnet 192.168.1.113:7013</p>
-<h2 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h2><h2 id="验证部署"><a href="#验证部署" class="headerlink" title="验证部署"></a>验证部署</h2><h2 id="最后总结"><a href="#最后总结" class="headerlink" title="最后总结"></a>最后总结</h2>
+<p>分别在不同的节点，把端口策略放开。</p>
+<h3 id="修改hosts文件"><a href="#修改hosts文件" class="headerlink" title="修改hosts文件"></a>修改hosts文件</h3><p>vi /etc/hosts<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">node1</span> 192<span class="selector-class">.168</span><span class="selector-class">.1</span><span class="selector-class">.112</span></div></pre></td></tr></table></figure></p>
+<p>在113机器上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node2 192.168.1.113</div></pre></td></tr></table></figure></p>
+<h2 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h2><p>之前的安装步骤和之前单机安装时一样的，所有这次就省略之前的步骤，直接到配置，创建域之后有些不同<br>….<br>一直到创建域完成之后的可选配置</p>
+<h3 id="配置管理服务器"><a href="#配置管理服务器" class="headerlink" title="配置管理服务器"></a>配置管理服务器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;--------------------------- Fusion Middleware 配置向导 ----------------&gt;</div><div class="line"></div><div class="line">选择可选配置:</div><div class="line">-------------------</div><div class="line">   1|管理服务器 [ ]</div><div class="line">   2|受管服务器, 集群和计算机 [ ]</div><div class="line">   3|RDBMS 安全存储 [ ]</div><div class="line">输入要选择的索引号 或 [退出][上一步][下一步]&gt;</div></pre></td></tr></table></figure>
+<p>输入1 。并且回车下一步，确认选择。</p>
+<h3 id="配置监听地址"><a href="#配置监听地址" class="headerlink" title="配置监听地址"></a>配置监听地址</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;--------------------------- Fusion Middleware 配置向导 -----------&gt;</div><div class="line"></div><div class="line">配置管理服务器:</div><div class="line">----------------------</div><div class="line"></div><div class="line">每个 WebLogic Server 域都必须有一个管理服务器。 该管理服务器用于执行管理任务。</div><div class="line"></div><div class="line">    |       Name       |        Value        |</div><div class="line">   _|__________________|_____________________|</div><div class="line">   1|       *名称:       |     AdminServer     |</div><div class="line">   2| *Listen address: | All Local Addresses |</div><div class="line">   3|   Listen port:   |        7001         |</div><div class="line">   4|    SSL 监听端口:     |         N/A         |</div><div class="line">   5|     已启用 SSL:     |        false        |</div><div class="line"></div><div class="line">使用以上值或选择另一选项:</div><div class="line">    1 - 修改 &quot;名称&quot;</div><div class="line">    2 - 修改 &quot;Listen address&quot;</div><div class="line">    3 - 修改 &quot;Listen port&quot;</div><div class="line">    4 - 修改 &quot;已启用 SSL&quot;</div><div class="line">    输入以下内容的值 &quot;Listen address&quot; 或 [退出][上一步][下一步]&gt; 192.168.1.112</div></pre></td></tr></table></figure>
+<p>选择2 ，输入ip 192.168.1.112,这个ip是刚刚分配的管理服务器的ip。端口默认为7001，不用修改。然后回车下一步</p>
+<h3 id="配置受管服务器"><a href="#配置受管服务器" class="headerlink" title="配置受管服务器"></a>配置受管服务器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">为受管服务器添加或删除配置信息。典型的生产环境都具有一个或多个受管服务器。 每个受管服务器都是用于承载企业应用程序的 WebLogic Server</div><div class="line">的实例。</div><div class="line"></div><div class="line">    | 名称* | Listen address* | Listen port | SSL 监听端口 | 已启用 SSL |</div><div class="line">   _|_____|_________________|_____________|__________|_________|</div></pre></td></tr></table></figure>
+<p>添加完node1,node2,porxy的ip,端口后，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> |  名称*  | Listen address* | Listen port | SSL 监听端口 | 已启用 SSL |</div><div class="line">  _|_______|_________________|_____________|__________|_________|</div><div class="line">  1| node1 |  192.168.1.112  |    7012     |   N/A    |  false  |</div><div class="line">  2| node2 |  192.168.1.113  |    7013     |   N/A    |  false  |</div><div class="line">3-&gt;| proxy |  192.168.1.112  |    8000     |   N/A    |  false  |</div></pre></td></tr></table></figure></p>
+<h2 id="配置集群"><a href="#配置集群" class="headerlink" title="配置集群"></a>配置集群</h2><p>输入集群名称，cluster，然后回车</p>
+<h3 id="修改集群消息传送模式"><a href="#修改集群消息传送模式" class="headerlink" title="修改集群消息传送模式"></a>修改集群消息传送模式</h3><p>集群消息传送模式，修改广播模式为多播 ，输入2 ，然后选择multicast<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">   |   名称*   | 集群消息传送模式  |   多点传送地址    | 多点传送端口 | 集群地址 |</div><div class="line">  _|_________|___________|_____________|________|______|</div><div class="line">1-&gt;| cluster | multicast | 239.192.0.0 |  7001  |      |</div></pre></td></tr></table></figure></p>
+<h3 id="向集群分配服务器"><a href="#向集群分配服务器" class="headerlink" title="向集群分配服务器"></a>向集群分配服务器</h3><p>把node1 和node2 都添加到集群，注意：不要添加代理的proxy<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">向域中的集群分配受管服务器。</div><div class="line"></div><div class="line">    集群</div><div class="line">    |_____cluster [1]</div><div class="line">         |_____node1</div><div class="line">         |_____node2</div></pre></td></tr></table></figure></p>
+<h3 id="创建代理的http应用程序"><a href="#创建代理的http应用程序" class="headerlink" title="创建代理的http应用程序"></a>创建代理的http应用程序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">是否要为任何集群创建 HTTP 代理应用程序?</div><div class="line"></div><div class="line">  -&gt; 1|是</div><div class="line"></div><div class="line">     2|否</div></pre></td></tr></table></figure>
+<h3 id="配置计算机"><a href="#配置计算机" class="headerlink" title="配置计算机"></a>配置计算机</h3><p>配置计算机名称，和端口地址，主要是配置好节点管理器<br>   1| Machine-0 | 192.168.1.112 |   5556    |<br>   启动节点管理器<br>   /home/weblogic/Oracle/Middleware/wlserver_10.3/server/bin/startNodeManager.sh<br>   节点管理器的配置文件：<br>   /home/weblogic/Oracle/Middleware/wlserver_10.3/common/nodemanager<br>   ps -ef|grep NodeManager 查看节点管理器是否启动<br>   netstat -npa|grep 5556 查看端口<br>   启动好了就可以通过控制台管理服务器了。 </p>
+<h2 id="配置服务器"><a href="#配置服务器" class="headerlink" title="配置服务器"></a>配置服务器</h2><p>在node 1 创建服务器节点server1<br>在node 2 创建服务器节点server2<br>这个步骤和创建普通的域一样，但是指定管理节点时候设置ip为192.168.1.112:7001，及之前的管理端口。</p>
+<h2 id="配置另一台weblogic"><a href="#配置另一台weblogic" class="headerlink" title="配置另一台weblogic"></a>配置另一台weblogic</h2><p>在112 这台，将按照目录打包，然后copy到113<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[weblogic@node1 ~]$ tar -x</div><div class="line">[weblogic@node1 ~]$ scp Oracle.tar 192.168.1.113:/home/weblogic/</div><div class="line">[weblogic@node1 ~]$ scp bea.tar 192.168.1.113:/home/weblogic/</div></pre></td></tr></table></figure></p>
+<h2 id="验证部署"><a href="#验证部署" class="headerlink" title="验证部署"></a>验证部署</h2><p>登录控制台进行管理集群，计算机，及服务器<br>点击控制台-环境-服务器如下表格：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>集群</th>
+<th>计算机</th>
+<th>状态</th>
+<th>监听端口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> AdminServer (管理)</td>
+<td></td>
+<td>RUNNING</td>
+<td>OK</td>
+<td>7001 </td>
+</tr>
+<tr>
+<td> node1</td>
+<td>cluster</td>
+<td>Machine-0</td>
+<td>STARTING</td>
+<td>7012 </td>
+</tr>
+<tr>
+<td> node2</td>
+<td>cluster</td>
+<td>Machine-0</td>
+<td>STARTING</td>
+<td>7013 </td>
+</tr>
+<tr>
+<td> proxy</td>
+<td></td>
+<td>SHUTDOWN</td>
+<td></td>
+<td>8000 </td>
+</tr>
+</tbody>
+</table>
+<h2 id="最后总结"><a href="#最后总结" class="headerlink" title="最后总结"></a>最后总结</h2><p>还有一些细节没写好， 主要注意配置好受管节点，及管理节点，和两台机器之间的通信验证，还有ip端口这些配置。</p>
+
       
     </div>
 
@@ -560,7 +619,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始安装"><span class="nav-number">2.</span> <span class="nav-text">开始安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证部署"><span class="nav-number">3.</span> <span class="nav-text">验证部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后总结"><span class="nav-number">4.</span> <span class="nav-text">最后总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改hosts文件"><span class="nav-number">1.1.</span> <span class="nav-text">修改hosts文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始安装"><span class="nav-number">2.</span> <span class="nav-text">开始安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置管理服务器"><span class="nav-number">2.1.</span> <span class="nav-text">配置管理服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置监听地址"><span class="nav-number">2.2.</span> <span class="nav-text">配置监听地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置受管服务器"><span class="nav-number">2.3.</span> <span class="nav-text">配置受管服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置集群"><span class="nav-number">3.</span> <span class="nav-text">配置集群</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改集群消息传送模式"><span class="nav-number">3.1.</span> <span class="nav-text">修改集群消息传送模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向集群分配服务器"><span class="nav-number">3.2.</span> <span class="nav-text">向集群分配服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建代理的http应用程序"><span class="nav-number">3.3.</span> <span class="nav-text">创建代理的http应用程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置计算机"><span class="nav-number">3.4.</span> <span class="nav-text">配置计算机</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置服务器"><span class="nav-number">4.</span> <span class="nav-text">配置服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置另一台weblogic"><span class="nav-number">5.</span> <span class="nav-text">配置另一台weblogic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证部署"><span class="nav-number">6.</span> <span class="nav-text">验证部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后总结"><span class="nav-number">7.</span> <span class="nav-text">最后总结</span></a></li></ol></div>
             
           </div>
         </section>
