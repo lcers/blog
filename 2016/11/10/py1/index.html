@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git pull push  clonegit" />
+  <meta name="keywords" content="python," />
 
 
 
@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。git作为常用版本管理工具，同svn一样也有GUI窗口操作，本文是对它几个常用的命令进行简单介绍，以下操作都是在安装好git的前提下，不涉及安装配置。主要介绍下面几个命令：">
+<meta name="description" content="序列，字符串，元祖，及字典">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git常用命令">
-<meta property="og:url" content="http://lcers.com/2016/10/13/git/index.html">
+<meta property="og:title" content="'Python基础1'">
+<meta property="og:url" content="http://lcers.com/2016/11/10/py1/index.html">
 <meta property="og:site_name" content="liuc's blog">
-<meta property="og:description" content="Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。git作为常用版本管理工具，同svn一样也有GUI窗口操作，本文是对它几个常用的命令进行简单介绍，以下操作都是在安装好git的前提下，不涉及安装配置。主要介绍下面几个命令：">
-<meta property="og:updated_time" content="2016-10-14T06:08:00.599Z">
+<meta property="og:description" content="序列，字符串，元祖，及字典">
+<meta property="og:updated_time" content="2016-11-10T09:36:03.797Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git常用命令">
-<meta name="twitter:description" content="Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。git作为常用版本管理工具，同svn一样也有GUI窗口操作，本文是对它几个常用的命令进行简单介绍，以下操作都是在安装好git的前提下，不涉及安装配置。主要介绍下面几个命令：">
+<meta name="twitter:title" content="'Python基础1'">
+<meta name="twitter:description" content="序列，字符串，元祖，及字典">
 
 
 
@@ -116,10 +116,10 @@
 
 
 
-  <link rel="canonical" href="http://lcers.com/2016/10/13/git/"/>
+  <link rel="canonical" href="http://lcers.com/2016/11/10/py1/"/>
 
 
-  <title> Git常用命令 | liuc's blog </title>
+  <title> 'Python基础1' | liuc's blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +269,7 @@
             
             
               
-                Git常用命令
+                'Python基础1'
               
             
           </h1>
@@ -281,8 +281,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-13T09:30:47+08:00" content="2016-10-13">
-              2016-10-13
+            <time itemprop="dateCreated" datetime="2016-11-10T15:51:30+08:00" content="2016-11-10">
+              2016-11-10
             </time>
           </span>
 
@@ -295,8 +295,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index">
-                    <span itemprop="name">tools</span>
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
                   </a>
                 </span>
 
@@ -311,8 +311,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/13/git/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/13/git/" itemprop="commentsCount"></span>
+                <a href="/2016/11/10/py1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/10/py1/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -335,34 +335,63 @@
       
 
       
-        <p>Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。<br>git作为常用版本管理工具，同svn一样也有GUI窗口操作，本文是对它几个常用的命令进行简单介绍，以下操作都是在安装好git的前提下，不涉及安装配置。主要介绍下面几个命令：</p>
-<a id="more"></a>
-<h2 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a>git clone</h2><pre><code>从远程服务器clone下一个版本库,我这儿远程服务器使用的是github,下载nodejs。
-命令语法 git clone &lt;版本库地址&gt; [本地目录]
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone git@github.com:nodejs/node.git F:/repo/nodejs</div></pre></td></tr></table></figure>
-<p>如下就开始下载</p>
-<blockquote>
-<p>Cloning into ‘F:/repo/nodejs’…<br>remote: Counting objects: 252182, done.<br>remote: Compressing objects: 100% (36/36), done.<br>Receiving objects:  43% (110476/252182), 135.79 MiB | 329.00 KiB/s<br>在本地的目录 f 盘下repo/nodejs就可以看到已经下载好的代码。</p>
-</blockquote>
-<h2 id="git-remote"><a href="#git-remote" class="headerlink" title="git remote"></a>git remote</h2><p>用于管理远程仓库名称,类似别名，默认clone下来的时候代码仓库名称为origin，也可以通过git clone -o name url 来指定名称。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#列出所有仓库名称</div><div class="line">git remoe</div><div class="line"># 查看仓库的地址</div><div class="line">git remote -v </div><div class="line"># 查看代码仓库的信息,可以查看这个版本库的分支，及网址</div><div class="line">git remote show origin</div><div class="line"># 删除名称，不会删除代码</div><div class="line">git remote rm origin</div><div class="line">#删除后，可以从新添加,需要只定远程代码库的位置</div><div class="line">git remote add origin git@github.com:nodejs/node.git</div><div class="line"># 重命名</div><div class="line">git remote rename origin nodejs</div></pre></td></tr></table></figure></p>
-<h2 id="git-fetch"><a href="#git-fetch" class="headerlink" title="git fetch"></a>git fetch</h2><pre><code>从远程取回更新，如果不指定分支名，会默认取回所有的分支，可以通过branch命令查看分支，
-取回后可以根据当前分支创建新的分支，也可以和本地分支进行合并
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># 查看分支,</div><div class="line">git branch</div><div class="line"># 查看远程分支</div><div class="line">git branch -r</div><div class="line"># 从某个分支更新,需要指定代码库名称和分支名称</div><div class="line">git fetch origin master</div><div class="line">#创建新的分支,需要指定分支名称，和根据那个分支进行创建</div><div class="line">git checkout -b testname origin/master</div><div class="line"># 合并分支，在当前分支进行合并</div><div class="line">git merge origin/master</div></pre></td></tr></table></figure>
-<p>例子：</p>
-<blockquote>
-<p>$ git branch -r<br>origin/HEAD -&gt; origin/master<br> origin/archived-io.js-v0.10<br>origin/archived-io.js-v0.12<br>…</p>
-</blockquote>
-<h2 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h2><p>  本地做了更新，需要提交到远程服务器，可以在github创建一个仓库，然后做测试。</p>
-<blockquote>
-<p>git push &lt;远程代码库名称&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</p>
-</blockquote>
-<p>  切换到需要推送代码的目录，执行git push,如果省略分支名，则会对服务器进行对比，<br>  如果存在就进行提交，不存在就新建分支。如果只有一个分支，远程代码库名称，本地分支都可以省略，<br>  默认推送当前分支。如果不知道代码库名称和分支名都可通过命令查询。<br>  注意： 如果指定了远程分支，没有指定本地分支，则推送一个空的分支进行替换远程分支，等同于删除分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#删除名为origin的代码库的master 分支</div><div class="line">git push origin :master </div><div class="line">git pusg origin --delete master</div><div class="line"># 以下是推送到远程master</div><div class="line">git push origin master</div></pre></td></tr></table></figure></p>
-<p>  push 还有一些其他参数，本文只简单介绍常用的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># 查看当前目录状态</div><div class="line">git status</div><div class="line"># 将你本地操作add 到git</div><div class="line">git add .</div><div class="line"># 提交</div><div class="line">git commit -m &apos;提交注释&apos;</div><div class="line"># push 到服务器 ,代码库，分支</div><div class="line">git push origin master </div><div class="line"></div><div class="line"># 其他可能用到的,指定当前分支的默认代码库名称</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
-<p>以上就是一个完整的提交流程，如果有冲突，需要先进行合并，在进行提交，也可以通过命令-force进行强制提交。</p>
-<h2 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h2><p>从某个分支进行更新，并且与本地进行合并<br>git pull [远程代码库名称] [远程分支名]:[本地分支名]<br>同push 一样，后面几个参数都可以省略，默认是当前分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 取远程origin 的master分支和本地的test分支进行合并</div><div class="line">git pull origin master:test</div><div class="line"># 省略分支名</div><div class="line">git pull origin</div><div class="line"># 省略代码库名称,</div><div class="line">git pull </div><div class="line"># 如果远程输出了某分支，git pull 不会删除本地分支，可以使用 -p 进行删除</div><div class="line">git pull -p</div></pre></td></tr></table></figure></p>
-<p>代码库名称，分支名可以省略是因为在clone的时候回自动建立追踪关系，也可以手动创建这种关系。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 手动创建master 追踪 origin的test分支，下次及可直接使用git push/pull</div><div class="line">git branch --set-upstream master origin/test</div></pre></td></tr></table></figure></p>
-<p>git 命令还有很多配置项，需要不断的学习。</p>
+        <p>序列，字符串，元祖，及字典<br><a id="more"></a></p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>可以通过索引来获取，删除，修改<br>del list[0]<br>list[0] =1</p>
+<p>list = [‘a’,’b’,’c’,’d’]<br>通过索引获取 list[0] ,输出 a ,如果获取一个超出范围的索引会提示错误。可以通过负数来获取从右边开始的值。<br>list[-1] 获取的是倒数第一个</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>list = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list[<span class="number">0</span>]</div><div class="line"><span class="string">'a'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list[<span class="number">6</span>]</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">IndexError: list index out of range</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list[<span class="number">-1</span>]</div><div class="line"><span class="string">'d'</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<h3 id="分片"><a href="#分片" class="headerlink" title="分片"></a>分片</h3><p>索引只能操作单个元素，有时候需要操作某个范围的元素.使用: 冒号来操作索引范围<br>list[1:2] 标示从下标1开始，获取到下标2范围的值。如果范围直接没有值则返回空的列表<br>list[1:1]<br>这个也可以使用负数，来从右边开始获取<br>list[-2:-1]</p>
+<p>list[-2:] 右边这个下标省略，标示一直获取到末尾，也可以用于开始下标<br>list[:3] 获取从0开始到3<br>通过这个可以用来复制整个列表，把两边下标值为空 list[]<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>list[<span class="number">-1</span>]</div><div class="line"><span class="string">'d'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list[<span class="number">1</span>:<span class="number">2</span>]</div><div class="line">[<span class="string">'b'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list[<span class="number">1</span>:<span class="number">1</span>]</div><div class="line">[]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list[<span class="number">-1</span>:<span class="number">-2</span>]</div><div class="line">[]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list[<span class="number">-1</span>:]</div><div class="line">[<span class="string">'d'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list[<span class="number">-3</span>:<span class="number">-1</span>]</div><div class="line">[<span class="string">'b'</span>, <span class="string">'c'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list[:<span class="number">3</span>]</div><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list1 = list[:]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list1</div><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>]</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure></p>
+<p>列表推导式<br>快速获取一个100以内偶数的列表<br>list2 = [x for x in range(101)]<br>切边之步长,及第2个冒号后的值，这个值默认为1 ，如果设置成大于1时，会跳过一些数<br>list2 = list2[0:100:2]</p>
+<p>以上的方法来获取偶数列表比较麻烦，以下直接通过推导式就可以了<br>list2=[x for x in range(101) if x%2==0]</p>
+<p>可以写多个循环，甚至一个语句写出99乘法表</p>
+<p>a = ‘\n’.join([‘ ‘.join([‘%s<em>%s=%s’ % (x,y,x</em>y) for x in range(1,y+1)]) for y in range(1,10)])</p>
+<p>print(a)<br>这个虽然只是写到一起，但也可以看出推导式的作用是用来生成列表的。</p>
+<p>序列相加，相乘</p>
+<p>list = [‘a’,’b’]</p>
+<p>list2 = [‘b’,’c’]</p>
+<p>list+list2 // 会组成新的列表 [‘a’, ‘b’, ‘b’, ‘c’]</p>
+<p>list * 3 // 会重复三次 [‘a’, ‘b’, ‘a’, ‘b’, ‘a’, ‘b’]</p>
+<p>常用列表内建函数 </p>
+<p>len(list) 获取列表长度，同样可用于获取字符串长度</p>
+<p>max(list)  获取最大的元素</p>
+<p>min(list) 获取最小的元素</p>
+<p>方法<br>x.append(e) 在列表末尾添加</p>
+<p>x.count(e) 统计e出现的次数，也可以用于字符串</p>
+<p>x.index(e) 出现的下标位置</p>
+<p>x.insert(index,e) 指定下标插入</p>
+<p>x.pop() 删除并且返回</p>
+<p>x.remove(e) 删除</p>
+<p>x.sort() 排序</p>
+<p>…..</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>字符串是程序最主要的构成，Python也提供了如何更好的操作字符串。<br>对序列操作的索引，分片，乘法，max,min ,len(),count都对字符串有作用。但是要主要分片赋值对字符串是不起作用的，字符串本质是不可变的。</p>
+<p>字符串格式化 ，这个同Java格式化字符串区别不大<br>s = ‘hello %s’<br>print(s % ‘world’)</p>
+<p>s= ‘ %s %d,%s %f’<br>params = (‘价格是：’ ,100,’打折后：’ ,98.2)<br>print(s % params)</p>
+<p>如果这个不能满足要求，可以使用模版字符串 Template ,类似freemarker的参数变量替换，当然功能没ftl强大。</p>
+<p>字符串方法，很多有用的方法。</p>
+<p>find(e,start,end) 查找，并且返回开始位置的索引，没找到-1,后面两个是可选参数，指定搜索范围。</p>
+<p>join() ，前面乘法表用过，把一个列表内的元素相加，元素必须是字符串<br>‘,’.join([‘1’,’2’]) split()的逆方法 </p>
+<p>replace () 查找并替换</p>
+<p>split() 切割字符串返回列表</p>
+<p>strip() 去除首尾空格</p>
+<p>…. 省略其他</p>
+<h2 id="字典-dict"><a href="#字典-dict" class="headerlink" title="字典 dict"></a>字典 dict</h2><p>map = {‘key1’:’value’,’key2’:’v’}</p>
+<p>del map[‘key1’] //删除</p>
+<p>map[‘key1’] = ‘test’ //更新</p>
+<p>len(map) 键值对数量</p>
+<p>‘key1’ in map //检查是否存在这个键</p>
+<p>方法 ，常用的</p>
+<p>clear</p>
+<p>get(k,default) //通过key获取值，无则默认返回default</p>
+<p>has_key(k) // k 是否存在</p>
+<p>items()  返回列表，列表存在以键值对形式</p>
+<p>keys() 返回列表，以键的形式</p>
+<p>pop(k) 获取k的value，不起从字典移除</p>
+<p>setDefault(‘n’,f)设置值</p>
+<p>values() 与keys() </p>
+<p>update(dict) 以一个字典的值更新另一个字典 </p>
+<p>….</p>
+<p>for k in map:<br>    print(k,’:’ ,map[k])</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>语法糖 exec  ，eval ,动态生成并且执行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">exec</span> (<span class="string">'print(" hhhh ")'</span>)</div><div class="line"><span class="keyword">exec</span> (<span class="string">'print(1+2+89)'</span>)</div><div class="line">a = eval(<span class="string">'1000+222'</span>)</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -385,7 +414,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag">#git</a>
+            <a href="/tags/python/" rel="tag">#python</a>
           
         </div>
       
@@ -394,13 +423,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/10/19/weblogic_cluster/" rel="next" title="Weblogic集群安装配置">
+                <i class="fa fa-chevron-left"></i> Weblogic集群安装配置
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/14/weblogic/" rel="prev" title="Weblogic单机安装及配置">
-                Weblogic单机安装及配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -432,8 +461,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/13/git/"
-           data-title="Git常用命令" data-url="http://lcers.com/2016/10/13/git/">
+      <div class="ds-thread" data-thread-key="2016/11/10/py1/"
+           data-title="'Python基础1'" data-url="http://lcers.com/2016/11/10/py1/">
       </div>
     
   </div>
@@ -545,7 +574,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-clone"><span class="nav-number">1.</span> <span class="nav-text">git clone</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-remote"><span class="nav-number">2.</span> <span class="nav-text">git remote</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-fetch"><span class="nav-number">3.</span> <span class="nav-text">git fetch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-push"><span class="nav-number">4.</span> <span class="nav-text">git push</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-pull"><span class="nav-number">5.</span> <span class="nav-text">git pull</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#列表"><span class="nav-number">1.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#索引"><span class="nav-number">1.1.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分片"><span class="nav-number">1.2.</span> <span class="nav-text">分片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">2.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字典-dict"><span class="nav-number">3.</span> <span class="nav-text">字典 dict</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">4.</span> <span class="nav-text">最后</span></a></li></ol></div>
             
           </div>
         </section>
